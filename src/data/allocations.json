@@ -1,178 +1,178 @@
 [
-    {
-        "id": 1,
-        "slug": "block-rewards",
-        "name": "Block Rewards",
-        "category": "Community",
-        "lock": 0,
-        "vesting": 217633920,
-        "vestingCalculation": "totalAmount * (1 - Math.pow(0.9972, elapsedWeeks))",
-        "releaseSchedule": 208896,
-        "wallets": [
-            {
-                "name": "Reserve",
-                "address": "VOI23XSJSJDHKLPLOP12345ABCDEFGHIJKL6789XYZ1234ABCDE567FGHJKL"
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "slug": "community-early-incentives",
-        "name": "Community Early Incentives",
-        "category": "Community",
-        "lock": 0,
-        "vesting": 54408480,
-        "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-        "releaseSchedule": 906808,
-        "wallets": [
-            {
-                "name": "Reserve",
-                "address": "VOI12ABCD5678EFGH9JKLMNOPQRSTU123456XYZABCDEFGHIJKLMNO56789PQ"
-            }
-        ]
-    },
-    {
-        "id": 3,
-        "slug": "community-mid-incentives",
-        "name": "Community Mid Incentives",
-        "category": "Community",
-        "lock": 0,
-        "vesting": 108816960,
-        "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-        "releaseSchedule": 906808,
-        "wallets": [
-            {
-                "name": "Reserve",
-                "address": "VOI9XYZABCD5678EFGH123JKLMNOPQRSTU56789ABCDE1234567FGHJKLMNO"
-            }
-        ]
-    },
-    {
-        "id": 4,
-        "slug": "community-late-incentives",
-        "name": "Community Late Incentives",
-        "category": "Community",
-        "lock": 54408480,
-        "vesting": 108816960,
-        "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-        "releaseSchedule": 906808,
-        "wallets": [
-            {
-                "name": "Reserve",
-                "address": "VOI78LMNOPQRSTU1234ABCDEFGHIJKL5678XYZ1234567FGHJKLMNOPQRS"
-            }
-        ]
-    },
-    {
-        "id": 5,
-        "slug": "treasury-early",
-        "name": "Treasury Early",
-        "category": "Block Authority",
-        "lock": 0,
-        "vesting": 0,
-        "vestingCalculation": "totalAmount",
-        "releaseSchedule": 906808,
-        "wallets": [
-            {
-                "name": "Reserve",
-                "address": "VOI56XYZ1234ABCDEFGHIJKLM56789NOPQRSTU567FGHJKLMNO123ABCDE"
-            }
-        ]
-    },
-    {
-        "id": 6,
-        "slug": "treasury-mid",
-        "name": "Treasury Mid",
-        "category": "Block Authority",
-        "lock": 21763392,
-        "vesting": 0,
-        "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-        "releaseSchedule": 906808,
-        "wallets": [
-            {
-                "name": "Reserve",
-                "address": "VOI34ABCDEFGHIJKL56789XYZ1234MNOPQRSTU5678FGHJKL123ABCDEF"
-            }
-        ]
-    },
-    {
-        "id": 7,
-        "slug": "treasury-late",
-        "name": "Treasury Late",
-        "category": "Block Authority",
-        "lock": 54408480,
-        "vesting": 0,
-        "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-        "releaseSchedule": 906808,
-        "wallets": [
-            {
-                "name": "Reserve",
-                "address": "VOI90JKLMNOPQRSTU1234ABCDEFG5678XYZ56789FGHJKLM123ABCDE1234"
-            }
-        ]
-    },
-    {
-        "id": 8,
-        "slug": "core-team-employees",
-        "name": "Core Team/Employees",
-        "category": "Block Authority",
-        "lock": 21763392,
-        "vesting": 10881696,
-        "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-        "releaseSchedule": 906808,
-        "wallets": [
-            {
-                "name": "Reserve",
-                "address": "VOI12FGHJKLM56789NOPQRSTU1234ABCDEFG56789XYZ123456ABCDEFGH"
-            }
-        ]
-    },
-    {
-        "id": 9,
-        "slug": "investor-private",
-        "name": "Investor Private",
-        "category": "Investors",
-        "lock": 21763392,
-        "vesting": 10881696,
-        "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-        "releaseSchedule": 906808,
-        "wallets": [
-            {
-                "name": "Reserve",
-                "address": "VOI78MNOPQRSTU12345XYZABCDEFGHIJKL5678FGHJKLM12345678ABCDE"
-            }
-        ]
-    },
-    {
-        "id": 10,
-        "slug": "investor-pre-seed",
-        "name": "Investor Pre-Seed",
-        "category": "Investors",
-        "lock": 21763392,
-        "vesting": 10881696,
-        "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-        "releaseSchedule": 906808,
-        "wallets": [
-            {
-                "name": "Reserve",
-                "address": "VOI56FGHJKLMNOPQRSTU1234567XYZABCDEFG5678ABC1234JKLMN567OPQ"
-            }
-        ]
-    },
-    {
-        "id": 11,
-        "slug": "investor-seed",
-        "name": "Investor Seed",
-        "category": "Investors",
-        "lock": 10881696,
-        "vesting": 0,
-        "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-        "releaseSchedule": 906808,
-        "wallets": [
-            {
-                "name": "Reserve",
-                "address": "VOI34ABCDEFGHIJKLM56789XYZ123456NOPQRSTU567FGHJKLMNO123ABC"
-            }
-        ]
-    }
+  {
+    "id": 1,
+    "slug": "block-rewards",
+    "name": "Block Rewards",
+    "category": "Community",
+    "lock": 0,
+    "vesting": 217633920,
+    "vestingCalculation": "totalAmount * (1 - Math.pow(0.9972, elapsedWeeks))",
+    "releaseSchedule": 208896,
+    "wallets": [
+      {
+        "name": "Reserve",
+        "address": "VOI23XSJSJDHKLPLOP12345ABCDEFGHIJKL6789XYZ1234ABCDE567FGHJKL"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "community-early-incentives",
+    "name": "Community Early Incentives",
+    "category": "Community",
+    "lock": 0,
+    "vesting": 54408480,
+    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "releaseSchedule": 906808,
+    "wallets": [
+      {
+        "name": "Reserve",
+        "address": "VOI12ABCD5678EFGH9JKLMNOPQRSTU123456XYZABCDEFGHIJKLMNO56789PQ"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "slug": "community-mid-incentives",
+    "name": "Community Mid Incentives",
+    "category": "Community",
+    "lock": 0,
+    "vesting": 108816960,
+    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "releaseSchedule": 906808,
+    "wallets": [
+      {
+        "name": "Reserve",
+        "address": "VOI9XYZABCD5678EFGH123JKLMNOPQRSTU56789ABCDE1234567FGHJKLMNO"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "community-late-incentives",
+    "name": "Community Late Incentives",
+    "category": "Community",
+    "lock": 54408480,
+    "vesting": 108816960,
+    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "releaseSchedule": 906808,
+    "wallets": [
+      {
+        "name": "Reserve",
+        "address": "VOI78LMNOPQRSTU1234ABCDEFGHIJKL5678XYZ1234567FGHJKLMNOPQRS"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "treasury-early",
+    "name": "Treasury Early",
+    "category": "Block Authority",
+    "lock": 0,
+    "vesting": 0,
+    "vestingCalculation": "totalAmount",
+    "releaseSchedule": 906808,
+    "wallets": [
+      {
+        "name": "Reserve",
+        "address": "VOI56XYZ1234ABCDEFGHIJKLM56789NOPQRSTU567FGHJKLMNO123ABCDE"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "slug": "treasury-mid",
+    "name": "Treasury Mid",
+    "category": "Block Authority",
+    "lock": 21763392,
+    "vesting": 0,
+    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "releaseSchedule": 906808,
+    "wallets": [
+      {
+        "name": "Reserve",
+        "address": "VOI34ABCDEFGHIJKL56789XYZ1234MNOPQRSTU5678FGHJKL123ABCDEF"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "slug": "treasury-late",
+    "name": "Treasury Late",
+    "category": "Block Authority",
+    "lock": 54408480,
+    "vesting": 0,
+    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "releaseSchedule": 906808,
+    "wallets": [
+      {
+        "name": "Reserve",
+        "address": "VOI90JKLMNOPQRSTU1234ABCDEFG5678XYZ56789FGHJKLM123ABCDE1234"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "slug": "core-team-employees",
+    "name": "Core Team/Employees",
+    "category": "Block Authority",
+    "lock": 21763392,
+    "vesting": 10881696,
+    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "releaseSchedule": 906808,
+    "wallets": [
+      {
+        "name": "Reserve",
+        "address": "VOI12FGHJKLM56789NOPQRSTU1234ABCDEFG56789XYZ123456ABCDEFGH"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "slug": "investor-private",
+    "name": "Investor Private",
+    "category": "Investors",
+    "lock": 21763392,
+    "vesting": 10881696,
+    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "releaseSchedule": 906808,
+    "wallets": [
+      {
+        "name": "Reserve",
+        "address": "VOI78MNOPQRSTU12345XYZABCDEFGHIJKL5678FGHJKLM12345678ABCDE"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "slug": "investor-pre-seed",
+    "name": "Investor Pre-Seed",
+    "category": "Investors",
+    "lock": 21763392,
+    "vesting": 10881696,
+    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "releaseSchedule": 906808,
+    "wallets": [
+      {
+        "name": "Reserve",
+        "address": "VOI56FGHJKLMNOPQRSTU1234567XYZABCDEFG5678ABC1234JKLMN567OPQ"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "slug": "investor-seed",
+    "name": "Investor Seed",
+    "category": "Investors",
+    "lock": 10881696,
+    "vesting": 0,
+    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "releaseSchedule": 906808,
+    "wallets": [
+      {
+        "name": "Reserve",
+        "address": "VOI34ABCDEFGHIJKLM56789XYZ123456NOPQRSTU567FGHJKLMNO123ABC"
+      }
+    ]
+  }
 ]
