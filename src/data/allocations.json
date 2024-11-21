@@ -4,14 +4,16 @@
     "slug": "block-rewards",
     "name": "Block Rewards",
     "category": "Community",
+    "totalAmount": 1000000000,
     "lock": 0,
-    "vesting": 217633920,
+    "vesting": 240,
     "vestingCalculation": "totalAmount * (1 - Math.pow(0.9972, elapsedWeeks))",
-    "releaseSchedule": 208896,
+    "releaseSchedule": "week",
+    "description": "Incentivizes validators and node operators to maintain network security over 20 years.",
     "wallets": [
       {
         "name": "Reserve",
-        "address": "VOI23XSJSJDHKLPLOP12345ABCDEFGHIJKL6789XYZ1234ABCDE567FGHJKL"
+        "address": "ACONNT2QLT5MEZYKBYJZXFFDRXPZQH7UUBMX7WAIOWFYLV5YRUCRIOVTH4"
       }
     ]
   },
@@ -20,14 +22,16 @@
     "slug": "community-early-incentives",
     "name": "Community Early Incentives",
     "category": "Community",
+    "totalAmount": 1500000000,
     "lock": 0,
-    "vesting": 54408480,
+    "vesting": 0,
     "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-    "releaseSchedule": 906808,
+    "releaseSchedule": "month",
+    "description": "Bootstraps the ecosystem's growth within the first 18 months post-TGE.",
     "wallets": [
       {
         "name": "Reserve",
-        "address": "VOI12ABCD5678EFGH9JKLMNOPQRSTU123456XYZABCDEFGHIJKLMNO56789PQ"
+        "address": "ACONNT2QLT5MEZYKBYJZXFFDRXPZQH7UUBMX7WAIOWFYLV5YRUCRIOVTH4"
       }
     ]
   },
@@ -36,14 +40,16 @@
     "slug": "community-mid-incentives",
     "name": "Community Mid Incentives",
     "category": "Community",
+    "totalAmount": 3000000000,
     "lock": 0,
-    "vesting": 108816960,
+    "vesting": 60,
     "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-    "releaseSchedule": 906808,
+    "releaseSchedule": "month",
+    "description": "Supports ecosystem development during the mid-phase, spanning 5 years.",
     "wallets": [
       {
         "name": "Reserve",
-        "address": "VOI9XYZABCD5678EFGH123JKLMNOPQRSTU56789ABCDE1234567FGHJKLMNO"
+        "address": "ACONNT2QLT5MEZYKBYJZXFFDRXPZQH7UUBMX7WAIOWFYLV5YRUCRIOVTH4"
       }
     ]
   },
@@ -52,14 +58,16 @@
     "slug": "community-late-incentives",
     "name": "Community Late Incentives",
     "category": "Community",
-    "lock": 54408480,
-    "vesting": 108816960,
+    "totalAmount": 2000000000,
+    "lock": 60,
+    "vesting": 120,
     "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-    "releaseSchedule": 906808,
+    "releaseSchedule": "month",
+    "description": "Ensures sustained growth and engagement in the ecosystem's later stages.",
     "wallets": [
       {
         "name": "Reserve",
-        "address": "VOI78LMNOPQRSTU1234ABCDEFGHIJKL5678XYZ1234567FGHJKLMNOPQRS"
+        "address": "ACONNT2QLT5MEZYKBYJZXFFDRXPZQH7UUBMX7WAIOWFYLV5YRUCRIOVTH4"
       }
     ]
   },
@@ -68,14 +76,16 @@
     "slug": "treasury-early",
     "name": "Treasury Early",
     "category": "Block Authority",
+    "totalAmount": 327200000,
     "lock": 0,
     "vesting": 0,
     "vestingCalculation": "totalAmount",
-    "releaseSchedule": 906808,
+    "releaseSchedule": "month",
+    "description": "Provides immediate funds for early-stage development and operations.",
     "wallets": [
       {
         "name": "Reserve",
-        "address": "VOI56XYZ1234ABCDEFGHIJKLM56789NOPQRSTU567FGHJKLMNO123ABCDE"
+        "address": "ACONNT2QLT5MEZYKBYJZXFFDRXPZQH7UUBMX7WAIOWFYLV5YRUCRIOVTH4"
       }
     ]
   },
@@ -84,14 +94,16 @@
     "slug": "treasury-mid",
     "name": "Treasury Mid",
     "category": "Block Authority",
-    "lock": 21763392,
+    "totalAmount": 500000000,
+    "lock": 24,
     "vesting": 0,
     "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-    "releaseSchedule": 906808,
+    "releaseSchedule": "month",
+    "description": "Allocates resources for mid-term initiatives and scaling efforts.",
     "wallets": [
       {
         "name": "Reserve",
-        "address": "VOI34ABCDEFGHIJKL56789XYZ1234MNOPQRSTU5678FGHJKL123ABCDEF"
+        "address": "ACONNT2QLT5MEZYKBYJZXFFDRXPZQH7UUBMX7WAIOWFYLV5YRUCRIOVTH4"
       }
     ]
   },
@@ -100,14 +112,16 @@
     "slug": "treasury-late",
     "name": "Treasury Late",
     "category": "Block Authority",
-    "lock": 54408480,
+    "totalAmount": 500000000,
+    "lock": 60,
     "vesting": 0,
     "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-    "releaseSchedule": 906808,
+    "releaseSchedule": "month",
+    "description": "Secures funding for long-term sustainability and unforeseen needs.",
     "wallets": [
       {
         "name": "Reserve",
-        "address": "VOI90JKLMNOPQRSTU1234ABCDEFG5678XYZ56789FGHJKLM123ABCDE1234"
+        "address": "ACONNT2QLT5MEZYKBYJZXFFDRXPZQH7UUBMX7WAIOWFYLV5YRUCRIOVTH4"
       }
     ]
   },
@@ -116,14 +130,16 @@
     "slug": "core-team-employees",
     "name": "Core Team/Employees",
     "category": "Block Authority",
-    "lock": 21763392,
-    "vesting": 10881696,
+    "totalAmount": 1000000000,
+    "lock": 24,
+    "vesting": 36,
     "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-    "releaseSchedule": 906808,
+    "releaseSchedule": "month",
+    "description": "Rewards core team members and employees, aligning their interests with the project's success.",
     "wallets": [
       {
         "name": "Reserve",
-        "address": "VOI12FGHJKLM56789NOPQRSTU1234ABCDEFG56789XYZ123456ABCDEFGH"
+        "address": "ACONNT2QLT5MEZYKBYJZXFFDRXPZQH7UUBMX7WAIOWFYLV5YRUCRIOVTH4"
       }
     ]
   },
@@ -132,14 +148,16 @@
     "slug": "investor-private",
     "name": "Investor Private",
     "category": "Investors",
-    "lock": 21763392,
-    "vesting": 10881696,
+    "totalAmount": 56000000,
+    "lock": 24,
+    "vesting": 36,
     "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-    "releaseSchedule": 906808,
+    "releaseSchedule": "month",
+    "description": "Allocates tokens to private investors supporting early development.",
     "wallets": [
       {
         "name": "Reserve",
-        "address": "VOI78MNOPQRSTU12345XYZABCDEFGHIJKL5678FGHJKLM12345678ABCDE"
+        "address": "ACONNT2QLT5MEZYKBYJZXFFDRXPZQH7UUBMX7WAIOWFYLV5YRUCRIOVTH4"
       }
     ]
   },
@@ -148,14 +166,16 @@
     "slug": "investor-pre-seed",
     "name": "Investor Pre-Seed",
     "category": "Investors",
-    "lock": 21763392,
-    "vesting": 10881696,
+    "totalAmount": 100800000,
+    "lock": 24,
+    "vesting": 36,
     "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-    "releaseSchedule": 906808,
+    "releaseSchedule": "month",
+    "description": "Designated for pre-seed investors who provided initial capital.",
     "wallets": [
       {
         "name": "Reserve",
-        "address": "VOI56FGHJKLMNOPQRSTU1234567XYZABCDEFG5678ABC1234JKLMN567OPQ"
+        "address": "ACONNT2QLT5MEZYKBYJZXFFDRXPZQH7UUBMX7WAIOWFYLV5YRUCRIOVTH4"
       }
     ]
   },
@@ -164,14 +184,16 @@
     "slug": "investor-seed",
     "name": "Investor Seed",
     "category": "Investors",
-    "lock": 10881696,
-    "vesting": 0,
+    "totalAmount": 16000000,
+    "lock": 12,
+    "vesting": 12,
     "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
-    "releaseSchedule": 906808,
+    "releaseSchedule": "month",
+    "description": "Supports seed investors with a quick return on investment.",
     "wallets": [
       {
         "name": "Reserve",
-        "address": "VOI34ABCDEFGHIJKLM56789XYZ123456NOPQRSTU567FGHJKLMNO123ABC"
+        "address": "ACONNT2QLT5MEZYKBYJZXFFDRXPZQH7UUBMX7WAIOWFYLV5YRUCRIOVTH4"
       }
     ]
   }

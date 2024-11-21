@@ -10,9 +10,11 @@ export interface Allocation {
   slug: string;
   name: string;
   category: AllocationCategory;
+  totalAmount: number;
   lock: number; // Lock period in blocks
   vesting: number; // Vesting duration in blocks
   vestingCalculation: string; // Formula for calculating vested amount
-  releaseSchedule: number; // Number of blocks per interval
+  releaseSchedule: string; // Number of blocks per interval
+  description: string;
   wallets: Wallet[]; // Array of wallet objects
 }
