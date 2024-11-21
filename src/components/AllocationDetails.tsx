@@ -9,7 +9,7 @@ interface AllocationDetailsProps {
 }
 
 export function AllocationDetails({ allocation }: AllocationDetailsProps) {
-  const { name, description, wallets, lock, vesting, totalAmount } = allocation;
+  const { name, description, lock, vesting, totalAmount } = allocation;
 
   return (
     <Card className='p-6'>
