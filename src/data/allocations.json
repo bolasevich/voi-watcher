@@ -1,5 +1,7 @@
 [
     {
+        "id": 1,
+        "slug": "block-rewards",
         "name": "Block Rewards",
         "category": "Community",
         "lock": 0,
@@ -14,6 +16,8 @@
         ]
     },
     {
+        "id": 2,
+        "slug": "community-early-incentives",
         "name": "Community Early Incentives",
         "category": "Community",
         "lock": 0,
@@ -28,6 +32,8 @@
         ]
     },
     {
+        "id": 3,
+        "slug": "community-mid-incentives",
         "name": "Community Mid Incentives",
         "category": "Community",
         "lock": 0,
@@ -42,6 +48,8 @@
         ]
     },
     {
+        "id": 4,
+        "slug": "community-late-incentives",
         "name": "Community Late Incentives",
         "category": "Community",
         "lock": 54408480,
@@ -56,6 +64,8 @@
         ]
     },
     {
+        "id": 5,
+        "slug": "treasury-early",
         "name": "Treasury Early",
         "category": "Block Authority",
         "lock": 0,
@@ -70,6 +80,8 @@
         ]
     },
     {
+        "id": 6,
+        "slug": "treasury-mid",
         "name": "Treasury Mid",
         "category": "Block Authority",
         "lock": 21763392,
@@ -84,6 +96,8 @@
         ]
     },
     {
+        "id": 7,
+        "slug": "treasury-late",
         "name": "Treasury Late",
         "category": "Block Authority",
         "lock": 54408480,
@@ -98,6 +112,8 @@
         ]
     },
     {
+        "id": 8,
+        "slug": "core-team-employees",
         "name": "Core Team/Employees",
         "category": "Block Authority",
         "lock": 21763392,
@@ -112,6 +128,8 @@
         ]
     },
     {
+        "id": 9,
+        "slug": "investor-private",
         "name": "Investor Private",
         "category": "Investors",
         "lock": 21763392,
@@ -126,6 +144,8 @@
         ]
     },
     {
+        "id": 10,
+        "slug": "investor-pre-seed",
         "name": "Investor Pre-Seed",
         "category": "Investors",
         "lock": 21763392,
@@ -140,6 +160,8 @@
         ]
     },
     {
+        "id": 11,
+        "slug": "investor-seed",
         "name": "Investor Seed",
         "category": "Investors",
         "lock": 10881696,
