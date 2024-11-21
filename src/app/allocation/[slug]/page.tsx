@@ -17,7 +17,7 @@ export default async function AllocationPage({ params }: Props) {
         return (
             <div>
                 <h1 className="text-2xl font-bold text-red-600">Allocation Not Found</h1>
-                <p>The allocation you're looking for does not exist.</p>
+                <p>The allocation you&apos;re looking for does not exist.</p>
             </div>
         );
     }
