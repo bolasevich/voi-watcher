@@ -35,7 +35,7 @@ export default async function AllocationPage({ params }: Props) {
         <div className='space-y-6'>
           <AllocationDetails allocation={allocation} />
           <AllocationSchedule allocation={allocation} />
-          {/* <BalanceOverview allocation={allocation} /> */}
+          <BalanceOverview allocation={allocation} />
           {/* <AllocationDetails
             title={mockData.allocation.title}
             description={mockData.allocation.description}
