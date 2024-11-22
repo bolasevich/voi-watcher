@@ -25,7 +25,7 @@
     "totalAmount": 1500000000,
     "lock": 0,
     "vesting": 0,
-    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "vestingCalculation": "totalAmount * (elapsedMonths / vestingMonths)",
     "releaseSchedule": "month",
     "description": "Bootstraps the ecosystem's growth within the first 18 months post-TGE.",
     "wallets": [
@@ -43,7 +43,7 @@
     "totalAmount": 3000000000,
     "lock": 0,
     "vesting": 60,
-    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "vestingCalculation": "totalAmount * (elapsedMonths / vestingMonths)",
     "releaseSchedule": "month",
     "description": "Supports ecosystem development during the mid-phase, spanning 5 years.",
     "wallets": [
@@ -61,7 +61,7 @@
     "totalAmount": 2000000000,
     "lock": 60,
     "vesting": 120,
-    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "vestingCalculation": "totalAmount * (elapsedMonths / vestingMonths)",
     "releaseSchedule": "month",
     "description": "Ensures sustained growth and engagement in the ecosystem's later stages.",
     "wallets": [
@@ -97,7 +97,7 @@
     "totalAmount": 500000000,
     "lock": 24,
     "vesting": 0,
-    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "vestingCalculation": "totalAmount * (elapsedMonths / vestingMonths)",
     "releaseSchedule": "month",
     "description": "Allocates resources for mid-term initiatives and scaling efforts.",
     "wallets": [
@@ -115,7 +115,7 @@
     "totalAmount": 500000000,
     "lock": 60,
     "vesting": 0,
-    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "vestingCalculation": "totalAmount * (elapsedMonths / vestingMonths)",
     "releaseSchedule": "month",
     "description": "Secures funding for long-term sustainability and unforeseen needs.",
     "wallets": [
@@ -133,7 +133,7 @@
     "totalAmount": 1000000000,
     "lock": 24,
     "vesting": 36,
-    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "vestingCalculation": "totalAmount * (elapsedMonths / vestingMonths)",
     "releaseSchedule": "month",
     "description": "Rewards core team members and employees, aligning their interests with the project's success.",
     "wallets": [
@@ -151,7 +151,7 @@
     "totalAmount": 56000000,
     "lock": 24,
     "vesting": 36,
-    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "vestingCalculation": "totalAmount * (elapsedMonths / vestingMonths)",
     "releaseSchedule": "month",
     "description": "Allocates tokens to private investors supporting early development.",
     "wallets": [
@@ -169,7 +169,7 @@
     "totalAmount": 100800000,
     "lock": 24,
     "vesting": 36,
-    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "vestingCalculation": "totalAmount * (elapsedMonths / vestingMonths)",
     "releaseSchedule": "month",
     "description": "Designated for pre-seed investors who provided initial capital.",
     "wallets": [
@@ -187,7 +187,7 @@
     "totalAmount": 16000000,
     "lock": 12,
     "vesting": 12,
-    "vestingCalculation": "totalAmount * (elapsedBlocks / totalVestingBlocks)",
+    "vestingCalculation": "totalAmount * (elapsedMonths / vestingMonths)",
     "releaseSchedule": "month",
     "description": "Supports seed investors with a quick return on investment.",
     "wallets": [

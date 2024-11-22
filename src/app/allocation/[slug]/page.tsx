@@ -1,6 +1,10 @@
 import { Allocation } from '@/types/Allocation';
-import allocationData from '@/data/allocations.json';
+import rawAllocationData from '@/data/allocations.json';
 import { AllocationDetails } from '@/components/AllocationDetails';
+import { AllocationSchedule } from '@/components/AllocationSchedule';
+import { BalanceOverview } from '@/components/BalanceOverview';
+
+const allocationData: Allocation[] = rawAllocationData as Allocation[];
 
 function getAllocationBySlug(slug: string): Allocation | undefined {
   return allocationData.find((allocation) => allocation.slug === slug);
@@ -30,6 +34,8 @@ export default async function AllocationPage({ params }: Props) {
       <main className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
         <div className='space-y-6'>
           <AllocationDetails allocation={allocation} />
+          <AllocationSchedule allocation={allocation} />
+          {/* <BalanceOverview allocation={allocation} /> */}
           {/* <AllocationDetails
             title={mockData.allocation.title}
             description={mockData.allocation.description}

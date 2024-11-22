@@ -42,7 +42,7 @@ export function AllocationDetails({ allocation }: AllocationDetailsProps) {
             </div>
             <div>
               <div className='text-sm text-gray-500'>Lockup Period</div>
-              <div className='font-semibold'>{lock} Blocks</div>
+              <div className='font-semibold'>{lock} Months</div>
             </div>
           </div>
 
@@ -53,7 +53,7 @@ export function AllocationDetails({ allocation }: AllocationDetailsProps) {
             </div>
             <div>
               <div className='text-sm text-gray-500'>Vesting Period</div>
-              <div className='font-semibold'>{vesting} Blocks</div>
+              <div className='font-semibold'>{vesting} Months</div>
             </div>
           </div>
         </div>
