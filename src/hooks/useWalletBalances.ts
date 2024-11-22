@@ -4,7 +4,7 @@ import { getAccountDetails } from '@/utils/blockchain';
 
 interface WalletBalance {
   address: string;
-  balance: bigint; // Store balance as bigint to preserve precision
+  balance: number; // Balance in VOI
   lastUpdated: number;
 }
 
@@ -20,6 +20,7 @@ interface WalletBalanceStore extends WalletBalanceState {
 }
 
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
+const VOI_DECIMALS = 6;
 
 export const useWalletBalances = create<WalletBalanceStore>()(
   devtools((set, get) => ({
@@ -44,7 +45,7 @@ export const useWalletBalances = create<WalletBalanceStore>()(
       try {
         // Fetch account details and extract balance
         const accountInfo = await getAccountDetails(address);
-        const balance = accountInfo.amount;
+        const balance = Number(accountInfo.amount) / Math.pow(10, VOI_DECIMALS);
 
         set((state) => ({
           balances: {

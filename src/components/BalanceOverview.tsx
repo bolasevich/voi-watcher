@@ -31,12 +31,11 @@ export function BalanceOverview({ allocation }: BalanceOverviewProps) {
 
   const walletBalances = wallets.map((wallet) => ({
     ...wallet,
-    balance: balances[wallet.address]?.balance ?? BigInt(0),
+    balance: balances[wallet.address]?.balance ?? 0,
   }));
 
-  const totalWalletBalance = walletBalances.reduce(
-    (sum, wallet) => sum + wallet.balance,
-    BigInt(0)
+  const totalWalletBalance = Math.round(
+    walletBalances.reduce((sum, wallet) => sum + wallet.balance, 0)
   );
 
   const { availableTokens } = calculateTokenProgress(
@@ -49,14 +48,12 @@ export function BalanceOverview({ allocation }: BalanceOverviewProps) {
     vestingCalculation
   );
 
-  const availableBalance = Math.max(
-    Number(availableTokens) -
-      (Number(totalAmount) - Number(totalWalletBalance)),
-    0
+  const availableBalance = Math.round(
+    Math.max(availableTokens - (totalAmount - totalWalletBalance), 0)
   );
 
   const availablePercentage = Math.round(
-    (availableBalance / Number(totalAmount)) * 100
+    (availableBalance / totalAmount) * 100
   );
 
   return (
@@ -66,7 +63,7 @@ export function BalanceOverview({ allocation }: BalanceOverviewProps) {
           <h3 className='text-sm text-gray-500 mb-2'>Available Balance</h3>
           <div className='flex items-baseline space-x-2'>
             <p className='text-2xl font-bold'>
-              {availableBalance.toLocaleString()} VOI
+              {Math.round(availableBalance).toLocaleString()} VOI
             </p>
             <span className='text-sm text-gray-500'>
               ({availablePercentage}%)
@@ -78,7 +75,7 @@ export function BalanceOverview({ allocation }: BalanceOverviewProps) {
           <h3 className='text-sm text-gray-500 mb-2'>Total Balance</h3>
           <div className='flex items-baseline space-x-2'>
             <p className='text-2xl font-bold'>
-              {Number(totalWalletBalance).toLocaleString()} VOI
+              {Math.round(totalWalletBalance).toLocaleString()} VOI
             </p>
           </div>
         </div>
@@ -101,7 +98,7 @@ export function BalanceOverview({ allocation }: BalanceOverviewProps) {
                     {isLoading && !balances[wallet.address] ? (
                       <span className='text-gray-400'>Loading...</span>
                     ) : (
-                      `${Number(wallet.balance).toLocaleString()} VOI`
+                      `${Math.round(wallet.balance).toLocaleString()} VOI`
                     )}
                   </span>
                 </div>
