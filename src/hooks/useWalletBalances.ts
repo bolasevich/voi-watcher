@@ -1,27 +1,37 @@
-// hooks/useWalletBalances.ts
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import type {
-  WalletBalanceStore,
-  WalletBalanceState,
-} from '@/types/WalletBalance';
-import type { BalanceResponse, ErrorResponse } from '@/types/api';
+import { getAccountDetails } from '@/utils/blockchain';
 
-const initialState: WalletBalanceState = {
-  balances: {},
-  isLoading: false,
-  error: null,
-};
+interface WalletBalance {
+  address: string;
+  balance: bigint; // Store balance as bigint to preserve precision
+  lastUpdated: number;
+}
+
+interface WalletBalanceState {
+  balances: Record<string, WalletBalance>;
+  isLoading: boolean;
+  error: string | null;
+}
+
+interface WalletBalanceStore extends WalletBalanceState {
+  fetchBalance: (address: string) => Promise<void>;
+  fetchBalances: (addresses: string[]) => Promise<void>;
+}
+
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
 
 export const useWalletBalances = create<WalletBalanceStore>()(
   devtools((set, get) => ({
-    ...initialState,
+    balances: {},
+    isLoading: false,
+    error: null,
 
-    fetchBalance: async (address: string) => {
+    async fetchBalance(address: string) {
       const { balances } = get();
       const now = Date.now();
-      const CACHE_DURATION = 5 * 60 * 1000;
 
+      // Use cached balance if it's still valid
       if (
         balances[address] &&
         now - balances[address].lastUpdated < CACHE_DURATION
@@ -32,13 +42,9 @@ export const useWalletBalances = create<WalletBalanceStore>()(
       set({ isLoading: true, error: null });
 
       try {
-        const response = await fetch(`/api/balance?address=${address}`);
-        if (!response.ok) {
-          const errorData = (await response.json()) as ErrorResponse;
-          throw new Error(errorData.error || 'Failed to fetch balance');
-        }
-
-        const { balance } = (await response.json()) as BalanceResponse;
+        // Fetch account details and extract balance
+        const accountInfo = await getAccountDetails(address);
+        const balance = accountInfo.amount;
 
         set((state) => ({
           balances: {
@@ -60,7 +66,7 @@ export const useWalletBalances = create<WalletBalanceStore>()(
       }
     },
 
-    fetchBalances: async (addresses: string[]) => {
+    async fetchBalances(addresses: string[]) {
       const uniqueAddresses = [...new Set(addresses)];
       await Promise.all(
         uniqueAddresses.map((address) => get().fetchBalance(address))

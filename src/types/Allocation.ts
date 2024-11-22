@@ -1,6 +1,4 @@
-export type AllocationCategory = 'Community' | 'Investors' | 'Block Authority';
-
-export type ReleaseSchedule = 'week' | 'month';
+export type AllocationCategory = 'Community' | 'Block Authority' | 'Investors';
 
 export interface Wallet {
   name: string;
@@ -13,10 +11,10 @@ export interface Allocation {
   name: string;
   category: AllocationCategory;
   totalAmount: number;
-  lock: number; // Lock period in months
-  vesting: number; // Vesting period in months
-  vestingCalculation: string; // Formula for calculating vested amount
-  releaseSchedule: ReleaseSchedule; // Must be "week" or "month"
+  lock: number;
+  vesting: number;
+  vestingCalculation: string;
+  releaseSchedule: 'week' | 'month';
   description: string;
-  wallets: Wallet[]; // Array of wallet objects
+  wallets: Wallet[];
 }

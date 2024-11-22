@@ -31,12 +31,12 @@ export function BalanceOverview({ allocation }: BalanceOverviewProps) {
 
   const walletBalances = wallets.map((wallet) => ({
     ...wallet,
-    balance: balances[wallet.address]?.balance ?? 0,
+    balance: balances[wallet.address]?.balance ?? BigInt(0),
   }));
 
   const totalWalletBalance = walletBalances.reduce(
     (sum, wallet) => sum + wallet.balance,
-    0
+    BigInt(0)
   );
 
   const { availableTokens } = calculateTokenProgress(
@@ -50,12 +50,13 @@ export function BalanceOverview({ allocation }: BalanceOverviewProps) {
   );
 
   const availableBalance = Math.max(
-    availableTokens - (totalAmount - totalWalletBalance),
+    Number(availableTokens) -
+      (Number(totalAmount) - Number(totalWalletBalance)),
     0
   );
 
   const availablePercentage = Math.round(
-    (availableBalance / totalAmount) * 100
+    (availableBalance / Number(totalAmount)) * 100
   );
 
   return (
@@ -77,7 +78,7 @@ export function BalanceOverview({ allocation }: BalanceOverviewProps) {
           <h3 className='text-sm text-gray-500 mb-2'>Total Balance</h3>
           <div className='flex items-baseline space-x-2'>
             <p className='text-2xl font-bold'>
-              {totalWalletBalance.toLocaleString()} VOI
+              {Number(totalWalletBalance).toLocaleString()} VOI
             </p>
           </div>
         </div>
@@ -100,7 +101,7 @@ export function BalanceOverview({ allocation }: BalanceOverviewProps) {
                     {isLoading && !balances[wallet.address] ? (
                       <span className='text-gray-400'>Loading...</span>
                     ) : (
-                      `${wallet.balance.toLocaleString()} VOI`
+                      `${Number(wallet.balance).toLocaleString()} VOI`
                     )}
                   </span>
                 </div>

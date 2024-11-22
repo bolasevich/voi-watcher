@@ -1,104 +1,56 @@
-// app/api/[operation]/route.ts
-import { NextResponse } from 'next/server';
-import { getWalletBalance, getAccountDetails } from '@/utils/blockchain';
-import type {
-  ApiContext,
-  BalanceResponse,
-  AccountResponse,
-  ErrorResponse,
-} from '@/types/api';
+import { NextRequest, NextResponse } from 'next/server';
+import { getAccountDetails } from '@/utils/blockchain';
+import algosdk from 'algosdk';
 
-type ApiResponse = BalanceResponse | AccountResponse | ErrorResponse;
+type ApiResponse =
+  | algosdk.modelsv2.Account
+  | { error: string; details?: string };
 
-function isBlockchainError(error: unknown): error is {
-  message: string;
-  status: number;
-  originalError?: unknown;
-} {
-  return (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    'status' in error
+function handleError(error: unknown): NextResponse<ApiResponse> {
+  console.error('API error:', error);
+  return NextResponse.json<ApiResponse>(
+    {
+      error: 'Internal server error',
+      details: error instanceof Error ? error.message : String(error),
+    },
+    { status: 500 }
   );
 }
 
-function handleError(error: unknown): NextResponse<ErrorResponse> {
-  console.error('API error:', error);
-
-  if (isBlockchainError(error)) {
-    return NextResponse.json(
-      {
-        error: error.message,
-        details: error.originalError ? String(error.originalError) : undefined,
-      },
-      { status: error.status }
-    );
-  }
-
-  if (error instanceof Error) {
-    return NextResponse.json(
-      {
-        error: 'Internal server error',
-        details: error.message,
-      },
-      { status: 500 }
-    );
-  }
-
-  return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
-}
-
 export async function GET(
-  request: Request,
-  context: ApiContext
-): Promise<NextResponse<ApiResponse>> {
+  request: NextRequest,
+  params: unknown
+): Promise<Response> {
   try {
-    const params = await context.params;
-    const operation = params?.operation;
+    // Await the params before destructuring
+    const routeParams = await (
+      params as { params: Promise<{ operation: string }> }
+    ).params;
+    const { operation } = routeParams;
 
-    if (!operation) {
-      return NextResponse.json(
-        { error: 'Operation not specified' },
+    if (operation !== 'account') {
+      return NextResponse.json<ApiResponse>(
+        {
+          error: 'Invalid operation',
+          details: `Unsupported operation '${operation}'`,
+        },
         { status: 400 }
       );
     }
 
-    // Validate address parameter
+    // Validate the address parameter
     const { searchParams } = new URL(request.url);
     const address = searchParams.get('address');
     if (!address) {
-      return NextResponse.json(
+      return NextResponse.json<ApiResponse>(
         { error: 'Address not specified' },
         { status: 400 }
       );
     }
 
-    // Handle operations
-    switch (operation) {
-      case 'balance': {
-        const amountInMicroVoi = await getWalletBalance(address);
-        const balance = amountInMicroVoi / 1e6;
-        return NextResponse.json({
-          address,
-          balance,
-        } as BalanceResponse);
-      }
-
-      case 'account': {
-        const accountInfo = await getAccountDetails(address);
-        return NextResponse.json(accountInfo as AccountResponse);
-      }
-
-      default:
-        return NextResponse.json(
-          {
-            error: 'Invalid operation',
-            details: `Operation '${operation}' is not supported`,
-          },
-          { status: 400 }
-        );
-    }
+    // Fetch and return account details
+    const accountInfo = await getAccountDetails(address);
+    return NextResponse.json<ApiResponse>(accountInfo);
   } catch (error) {
     return handleError(error);
   }

@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { Allocation } from '@/types/Allocation';
-import allocationData from '@/data/allocations.json';
+import allocationData from '@/data/allocations.json' assert { type: 'json' };
 
 export default function HomePage() {
-  const allocations: Allocation[] = allocationData; // No type assertion needed
+  // Type assertion to tell TypeScript that the JSON matches our type
+  const allocations = allocationData as Allocation[];
 
   return (
     <div>
@@ -33,11 +34,11 @@ export default function HomePage() {
             </p>
             <p className='text-gray-600'>
               <strong>Lock Period:</strong> {allocation.lock.toLocaleString()}{' '}
-              blocks
+              months
             </p>
             <p className='text-gray-600'>
               <strong>Vesting Period:</strong>{' '}
-              {allocation.vesting.toLocaleString()} blocks
+              {allocation.vesting.toLocaleString()} months
             </p>
           </li>
         ))}
