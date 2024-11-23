@@ -1,4 +1,4 @@
-export type AllocationCategory = 'Community' | 'Block Authority' | 'Investors';
+export type AllocationCategory = 'Community' | 'Block Authority' | 'Purchaser';
 
 export interface Wallet {
   name: string;

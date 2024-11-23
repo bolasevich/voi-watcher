@@ -145,15 +145,15 @@
   },
   {
     "id": 9,
-    "slug": "investor-private",
-    "name": "Investor Private",
-    "category": "Investors",
+    "slug": "purchaser-private",
+    "name": "Purchaser Private",
+    "category": "Purchaser",
     "totalAmount": 56000000,
     "lock": 24,
     "vesting": 36,
     "vestingCalculation": "totalAmount * (elapsedMonths / vestingMonths)",
     "releaseSchedule": "month",
-    "description": "Allocates tokens to private investors supporting early development.",
+    "description": "Allocates tokens to private purchasers supporting early development.",
     "wallets": [
       {
         "name": "Reserve",
@@ -163,15 +163,15 @@
   },
   {
     "id": 10,
-    "slug": "investor-pre-seed",
-    "name": "Investor Pre-Seed",
-    "category": "Investors",
+    "slug": "purchaser-pre-seed",
+    "name": "Purchaser Pre-Seed",
+    "category": "Purchaser",
     "totalAmount": 100800000,
     "lock": 24,
     "vesting": 36,
     "vestingCalculation": "totalAmount * (elapsedMonths / vestingMonths)",
     "releaseSchedule": "month",
-    "description": "Designated for pre-seed investors who provided initial capital.",
+    "description": "Designated for pre-seed purchaser who provided initial capital.",
     "wallets": [
       {
         "name": "Reserve",
@@ -181,15 +181,15 @@
   },
   {
     "id": 11,
-    "slug": "investor-seed",
-    "name": "Investor Seed",
-    "category": "Investors",
+    "slug": "purchaser-seed",
+    "name": "Purchaser Seed",
+    "category": "Purchaser",
     "totalAmount": 16000000,
     "lock": 12,
     "vesting": 12,
     "vestingCalculation": "totalAmount * (elapsedMonths / vestingMonths)",
     "releaseSchedule": "month",
-    "description": "Supports seed investors with a quick return on investment.",
+    "description": "Supports seed purchaser with a quick return on investment.",
     "wallets": [
       {
         "name": "Reserve",

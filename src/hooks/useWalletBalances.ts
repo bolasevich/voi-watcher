@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { getAccountDetails } from '@/utils/blockchain';
+import Bottleneck from 'bottleneck';
 
 interface WalletBalance {
   address: string;
@@ -22,13 +22,19 @@ interface WalletBalanceStore extends WalletBalanceState {
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
 const VOI_DECIMALS = 6;
 
+// Create a limiter for API calls
+const limiter = new Bottleneck({
+  minTime: 100, // Minimum time between requests
+  maxConcurrent: 1, // Only process one request at a time
+});
+
 export const useWalletBalances = create<WalletBalanceStore>()(
   devtools((set, get) => ({
     balances: {},
     isLoading: false,
     error: null,
 
-    async fetchBalance(address: string) {
+    fetchBalance: limiter.wrap(async (address: string) => {
       const { balances } = get();
       const now = Date.now();
 
@@ -43,8 +49,13 @@ export const useWalletBalances = create<WalletBalanceStore>()(
       set({ isLoading: true, error: null });
 
       try {
-        // Fetch account details and extract balance
-        const accountInfo = await getAccountDetails(address);
+        const response = await fetch(`/api/account?address=${address}`);
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Failed to fetch balance');
+        }
+
+        const accountInfo = await response.json();
         const balance = Number(accountInfo.amount) / Math.pow(10, VOI_DECIMALS);
 
         set((state) => ({
@@ -65,7 +76,7 @@ export const useWalletBalances = create<WalletBalanceStore>()(
           isLoading: false,
         });
       }
-    },
+    }),
 
     async fetchBalances(addresses: string[]) {
       const uniqueAddresses = [...new Set(addresses)];

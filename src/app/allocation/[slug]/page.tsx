@@ -3,6 +3,7 @@ import rawAllocationData from '@/data/allocations.json';
 import { AllocationDetails } from '@/components/AllocationDetails';
 import { AllocationSchedule } from '@/components/AllocationSchedule';
 import { BalanceOverview } from '@/components/BalanceOverview';
+import { TransactionList } from '@/components/TransactionList';
 
 const allocationData: Allocation[] = rawAllocationData as Allocation[];
 
@@ -36,6 +37,7 @@ export default async function AllocationPage({ params }: Props) {
           <AllocationDetails allocation={allocation} />
           <AllocationSchedule allocation={allocation} />
           <BalanceOverview allocation={allocation} />
+          <TransactionList allocation={allocation} />
           {/* <AllocationDetails
             title={mockData.allocation.title}
             description={mockData.allocation.description}
