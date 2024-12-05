@@ -38,24 +38,6 @@ export default async function AllocationPage({ params }: Props) {
           <AllocationSchedule allocation={allocation} />
           <BalanceOverview allocation={allocation} />
           <TransactionList allocation={allocation} />
-          {/* <AllocationDetails
-            title={mockData.allocation.title}
-            description={mockData.allocation.description}
-            wallets={mockData.allocation.wallets}
-            allocation={{
-              totalAmount: mockData.allocation.totalAmount,
-              lockupPeriod: mockData.allocation.lockupPeriod,
-              vestingPeriod: mockData.allocation.vestingPeriod,
-            }}
-          />
-          <AllocationSchedule
-            lockBlocks={100000}
-            vestingBlocks={100000}
-            startBlock={100}
-            currentBlock={1000}
-          />
-          <BalanceOverview {...mockData.balances} />
-          <TransactionList transactions={transactions} /> */}
         </div>
       </main>
     </div>
