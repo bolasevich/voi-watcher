@@ -1,33 +1,30 @@
 import { SupplyCard } from './SupplyCard';
+import { MAX_SUPPLY } from '@/config'; // Import the constant directly
 
 interface SupplyOverviewProps {
-  totalSupply: bigint;
-  distributedSupply: bigint;
-  availableSupply: bigint;
+  distributedSupply: number;
+  availableSupply: number;
 }
 
 export function SupplyOverview({
-  totalSupply,
   distributedSupply,
   availableSupply,
 }: SupplyOverviewProps) {
+
   return (
-    <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-12'>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
       <SupplyCard
-        title='Total Supply'
-        amount={totalSupply}
-        totalSupply={totalSupply}
+        title="Total Supply"
+        amount={Number(MAX_SUPPLY)}
         showPercentage={false}
       />
       <SupplyCard
-        title='Distributed Supply'
+        title="Distributed Supply"
         amount={distributedSupply}
-        totalSupply={totalSupply}
       />
       <SupplyCard
-        title='Available Supply'
+        title="Available Supply"
         amount={availableSupply}
-        totalSupply={totalSupply}
       />
     </div>
   );

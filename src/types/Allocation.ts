@@ -6,7 +6,6 @@ export interface Wallet {
 }
 
 export interface Allocation {
-  id: number;
   slug: string;
   name: string;
   category: AllocationCategory;
@@ -17,4 +16,13 @@ export interface Allocation {
   releaseSchedule: 'week' | 'month';
   description: string;
   wallets: Wallet[];
+  distributedAmount: number;
+  availableAmount: number;
 }
+
+export interface Category {
+  category: AllocationCategory; 
+  allocations: Allocation[];
+}
+
+export type AllocationData = Category[];

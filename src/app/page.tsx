@@ -1,43 +1,35 @@
-import { Allocation } from '@/types/Allocation';
 import allocationData from '@/data/allocations.json' assert { type: 'json' };
 import { SupplyOverview } from '@/components/SupplyOverview';
 import { AllocationCategory } from '@/components/AllocationCategory';
+import { processAllocations } from '@/utils/allocation';
+import { AllocationData } from '@/types/Allocation';
 
-export default function HomePage() {
-  const allocations = allocationData as Allocation[];
+export default async function HomePage() {
+  // Process allocations to calculate availableAmount and distributedAmount
+  const processedCategories = await processAllocations(allocationData as AllocationData);
 
-  const totalSupply = BigInt(1_000_000_000); // Example: 1 billion tokens
-  const distributedSupply = BigInt(400_000_000); // Example: 400 million tokens
-  const availableSupply = BigInt(600_000_000); // Example: 600 million tokens
+  // Calculate totals in a single loop
+  let totalAvailable = 0;
+  let totalDistributed = 0;
 
-  // Group allocations by category
-  const groupedAllocations = allocations.reduce(
-    (groups, allocation) => {
-      if (!groups[allocation.category]) {
-        groups[allocation.category] = [];
-      }
-      groups[allocation.category].push(allocation);
-      return groups;
-    },
-    {} as Record<string, Allocation[]>
-  );
+  processedCategories.forEach((category) => {
+    category.allocations.forEach((allocation) => {
+      totalAvailable += allocation.availableAmount || 0;
+      totalDistributed += allocation.distributedAmount || 0;
+    });
+  });
 
   return (
     <div>
       {/* Supply Overview */}
       <SupplyOverview
-        totalSupply={totalSupply}
-        distributedSupply={distributedSupply}
-        availableSupply={availableSupply}
+        availableSupply={totalAvailable}
+        distributedSupply={totalDistributed}
       />
 
       {/* Render Allocation Categories */}
-      {Object.entries(groupedAllocations).map(([category, items]) => (
-        <AllocationCategory
-          key={category}
-          title={category}
-          allocations={items}
-        />
+      {processedCategories.map((category) => (
+        <AllocationCategory key={category.category} category={category} />
       ))}
     </div>
   );
