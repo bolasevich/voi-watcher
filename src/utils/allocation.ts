@@ -8,7 +8,7 @@ const DEBUG = true; // Set this to false to disable debug logging
 /**
  * Conditional logging utility
  */
-function logDebug(message: string, ...optionalParams: any[]) {
+function logDebug(message: string, ...optionalParams: unknown[]): void {
   if (DEBUG) {
     console.log(message, ...optionalParams);
   }
