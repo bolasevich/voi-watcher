@@ -22,7 +22,6 @@ interface BigIntObject {
   [key: string]: BigIntValue;
 }
 
-// Helper function to handle errors
 function handleError(error: unknown): NextResponse<ApiResponse> {
   console.error('API error:', error);
   return NextResponse.json<ApiResponse>(
@@ -61,68 +60,45 @@ function convertBigIntToString(obj: BigIntValue): BigIntValue {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { operation: string } }
+  params: unknown
 ): Promise<Response> {
   try {
-    const { operation } = params;
-
-    console.log(`Operation: ${operation}`);
+    const routeParams = await (
+      params as { params: Promise<{ operation: string }> }
+    ).params;
+    const { operation } = routeParams;
 
     // Validate the address parameter
     const { searchParams } = new URL(request.url);
     const address = searchParams.get('address');
     if (!address) {
-      console.error('Address not specified');
       return NextResponse.json<ApiResponse>(
         { error: 'Address not specified' },
         { status: 400 }
       );
     }
 
-    console.log(`Address: ${address}`);
-
     // Handle different operations
     switch (operation) {
       case 'account': {
-        console.log(`Fetching account details for ${address}`);
         const accountInfo = await getAccountDetails(address);
-
-        if (!accountInfo) {
-          console.error('Account details not found');
-          return NextResponse.json<ApiResponse>(
-            { error: 'Account details not found' },
-            { status: 404 }
-          );
-        }
-
+        // Convert BigInt values to strings before sending response
         const serializedInfo = convertBigIntToString(
           accountInfo as unknown as BigIntValue
         );
-
         return NextResponse.json(serializedInfo);
       }
 
       case 'transactions': {
-        console.log(`Fetching transactions for ${address}`);
         const transactions = await getWalletTransactions(address);
-
-        if (!transactions || transactions.length === 0) {
-          console.error('Transactions not found');
-          return NextResponse.json<ApiResponse>(
-            { error: 'Transactions not found' },
-            { status: 404 }
-          );
-        }
-
+        // Convert BigInt values to strings before sending response
         const serializedTxns = convertBigIntToString(
           transactions as unknown as BigIntValue
         );
-
         return NextResponse.json(serializedTxns);
       }
 
       default:
-        console.error(`Unsupported operation '${operation}'`);
         return NextResponse.json<ApiResponse>(
           {
             error: 'Invalid operation',
