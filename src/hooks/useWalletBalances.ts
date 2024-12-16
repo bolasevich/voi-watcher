@@ -51,16 +51,6 @@ export const useWalletBalances = create<WalletBalanceStore>()(
         const { balances } = get();
         const now = Date.now();
 
-        // Check if we're on the server during SSR
-        if (typeof window === 'undefined') {
-          console.warn(`Skipping fetch for ${address} during SSR.`);
-          return {
-            address,
-            balance: 0, // Default balance for SSR
-            lastUpdated: now,
-          };
-        }
-
         // Check if cached balance is still valid
         if (
           balances[address] &&
@@ -69,10 +59,19 @@ export const useWalletBalances = create<WalletBalanceStore>()(
           return balances[address]; // Return cached balance
         }
 
+        if (process.env.NEXT_PHASE === 'phase-production-build') {
+          // Skip fetches during the build phase
+          console.log('Skipping fetchBalance during build phase for:', address);
+          return {
+            address,
+            balance: 0,
+            lastUpdated: now,
+          };
+        }
+
         set({ isLoading: true, error: null });
 
         try {
-          // Use getApiUrl to construct the API URL
           const url = getApiUrl(
             `/api/account?address=${encodeURIComponent(address)}`
           );
@@ -88,7 +87,6 @@ export const useWalletBalances = create<WalletBalanceStore>()(
           const balance =
             Number(accountInfo.amount) / Math.pow(10, VOI_DECIMALS);
 
-          // Update state with the new balance
           const walletBalance = {
             address,
             balance,
@@ -123,36 +121,34 @@ export const useWalletBalances = create<WalletBalanceStore>()(
       const { balances } = get();
       const now = Date.now();
 
-      // Check if we're on the server during SSR
-      if (typeof window === 'undefined') {
-        console.warn('Skipping fetch balances during SSR.');
-        return addresses.reduce(
-          (mockedBalances, address) => ({
-            ...mockedBalances,
-            [address]: { address, balance: 0, lastUpdated: now },
-          }),
-          {}
-        );
-      }
-
-      // Determine addresses that need to be fetched
       const missingOrStale = addresses.filter(
         (address) =>
           !balances[address] ||
           now - balances[address].lastUpdated >= CACHE_DURATION
       );
 
-      // Log debug info
-      console.log('Addresses needing fetch:', missingOrStale);
+      if (process.env.NEXT_PHASE === 'phase-production-build') {
+        // Skip fetches during the build phase
+        console.log('Skipping fetchBalances during build phase.');
+        return addresses.reduce(
+          (result, address) => ({
+            ...result,
+            [address]: {
+              address,
+              balance: 0,
+              lastUpdated: now,
+            },
+          }),
+          {}
+        );
+      }
 
-      // Fetch missing or stale balances
       if (missingOrStale.length > 0) {
         await Promise.all(
           missingOrStale.map((address) => get().fetchBalance(address))
         );
       }
 
-      // Return the balances for all requested addresses
       const resolvedBalances = addresses.reduce(
         (result, address) => {
           result[address] = get().balances[address];
