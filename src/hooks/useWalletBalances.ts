@@ -51,6 +51,16 @@ export const useWalletBalances = create<WalletBalanceStore>()(
         const { balances } = get();
         const now = Date.now();
 
+        // Check if we're on the server during SSR
+        if (typeof window === 'undefined') {
+          console.warn(`Skipping fetch for ${address} during SSR.`);
+          return {
+            address,
+            balance: 0, // Default balance for SSR
+            lastUpdated: now,
+          };
+        }
+
         // Check if cached balance is still valid
         if (
           balances[address] &&
@@ -112,6 +122,18 @@ export const useWalletBalances = create<WalletBalanceStore>()(
     ): Promise<Record<string, WalletBalance>> {
       const { balances } = get();
       const now = Date.now();
+
+      // Check if we're on the server during SSR
+      if (typeof window === 'undefined') {
+        console.warn('Skipping fetch balances during SSR.');
+        return addresses.reduce(
+          (mockedBalances, address) => ({
+            ...mockedBalances,
+            [address]: { address, balance: 0, lastUpdated: now },
+          }),
+          {}
+        );
+      }
 
       // Determine addresses that need to be fetched
       const missingOrStale = addresses.filter(
