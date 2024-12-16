@@ -21,7 +21,7 @@ export interface Allocation {
 }
 
 export interface Category {
-  category: AllocationCategory; 
+  category: AllocationCategory;
   allocations: Allocation[];
 }
 

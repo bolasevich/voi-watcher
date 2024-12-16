@@ -85,7 +85,9 @@ export function calculateTokenProgress(
               case 'vestingMonths':
                 return `${totalVestingMonths}`;
               default:
-                throw new Error(`Unknown variable in vestingCalculation: ${match}`);
+                throw new Error(
+                  `Unknown variable in vestingCalculation: ${match}`
+                );
             }
           }
         )
@@ -100,7 +102,9 @@ export function calculateTokenProgress(
     vestingProgress = 100;
   }
 
-  logDebug(`Available Tokens: ${availableTokens}, Vesting Progress: ${vestingProgress}%`);
+  logDebug(
+    `Available Tokens: ${availableTokens}, Vesting Progress: ${vestingProgress}%`
+  );
 
   return {
     availableTokens,
@@ -109,7 +113,9 @@ export function calculateTokenProgress(
   };
 }
 
-export async function processAllocations(allocationData: AllocationData): Promise<AllocationData> {
+export async function processAllocations(
+  allocationData: AllocationData
+): Promise<AllocationData> {
   const { fetchBalances } = useWalletBalances.getState();
 
   // Step 1: Calculate distributed amounts for each allocation
@@ -137,7 +143,11 @@ export async function processAllocations(allocationData: AllocationData): Promis
 
   // Step 2: Fetch wallet balances for all unique addresses
   const allWalletAddresses = updatedAllocationData
-    .flatMap((category) => category.allocations.flatMap((allocation) => allocation.wallets.map((w) => w.address)))
+    .flatMap((category) =>
+      category.allocations.flatMap((allocation) =>
+        allocation.wallets.map((w) => w.address)
+      )
+    )
     .filter((address, index, self) => self.indexOf(address) === index); // Ensure unique addresses
 
   const balances = await fetchBalances(allWalletAddresses);
@@ -147,10 +157,14 @@ export async function processAllocations(allocationData: AllocationData): Promis
     ...category,
     allocations: category.allocations.map((allocation) => {
       // Calculate wallet balance
-      const walletBalance = allocation.wallets.reduce((sum, wallet) => sum + (balances[wallet.address]?.balance || 0), 0);
+      const walletBalance = allocation.wallets.reduce(
+        (sum, wallet) => sum + (balances[wallet.address]?.balance || 0),
+        0
+      );
 
       // Calculate Available Balance (allowing negative values for auditing purposes)
-      const availableAmount = allocation.distributedAmount - (allocation.totalAmount - walletBalance);
+      const availableAmount =
+        allocation.distributedAmount - (allocation.totalAmount - walletBalance);
 
       return {
         ...allocation,

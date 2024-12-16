@@ -6,7 +6,9 @@ import { AllocationData } from '@/types/Allocation';
 
 export default async function HomePage() {
   // Process allocations to calculate availableAmount and distributedAmount
-  const processedCategories = await processAllocations(allocationData as AllocationData);
+  const processedCategories = await processAllocations(
+    allocationData as AllocationData
+  );
 
   // Calculate totals in a single loop
   let totalAvailable = 0;
