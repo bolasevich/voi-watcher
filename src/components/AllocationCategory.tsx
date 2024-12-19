@@ -52,7 +52,7 @@ export function AllocationCategory({ category }: AllocationCategoryProps) {
             </p>
           </div>
           <div>
-            <h3 className='text-sm text-gray-500'>Distributed Supply</h3>
+            <h3 className='text-sm text-gray-500'>Unlocked Supply</h3>
             <p className='font-semibold text-lg'>
               {distributedSupply.toLocaleString()} VOI
             </p>

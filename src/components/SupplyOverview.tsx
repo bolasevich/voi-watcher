@@ -17,7 +17,7 @@ export function SupplyOverview({
         amount={Number(MAX_SUPPLY)}
         showPercentage={false}
       />
-      <SupplyCard title='Distributed Supply' amount={distributedSupply} />
+      <SupplyCard title='Unlocked Supply' amount={distributedSupply} />
       <SupplyCard title='Available Supply' amount={availableSupply} />
     </div>
   );

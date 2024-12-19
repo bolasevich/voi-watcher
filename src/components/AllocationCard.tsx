@@ -56,7 +56,7 @@ export function AllocationCard({ allocation }: AllocationCardProps) {
 
         {/* Distributed Tokens */}
         <div>
-          <h3 className='text-sm text-gray-500'>Distributed Amount</h3>
+          <h3 className='text-sm text-gray-500'>Unlocked Amount</h3>
           <p className='font-semibold text-lg'>
             {(distributedAmount || 0).toLocaleString()} VOI
           </p>
