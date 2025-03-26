@@ -11,7 +11,7 @@ export function SupplyOverview({
   availableSupply,
 }: SupplyOverviewProps) {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-12'>
+    <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 dark:text-white'>
       <SupplyCard
         title='Total Supply'
         amount={Number(MAX_SUPPLY)}

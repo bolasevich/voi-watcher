@@ -89,19 +89,19 @@ export function AllocationSchedule({ allocation }: AllocationScheduleProps) {
     switch (phase) {
       case 'locked':
         return hasLockPeriod ? (
-          <span className='px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium'>
+          <span className='px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 rounded-full text-sm font-medium'>
             Locked
           </span>
         ) : null;
       case 'vesting':
         return (
-          <span className='px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium'>
+          <span className='px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium'>
             Vesting in Progress
           </span>
         );
       case 'complete':
         return (
-          <span className='px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium'>
+          <span className='px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full text-sm font-medium'>
             Fully Vested
           </span>
         );
@@ -120,11 +120,11 @@ export function AllocationSchedule({ allocation }: AllocationScheduleProps) {
 
         <div className='pt-4 pb-20 mx-16'>
           <div className='relative'>
-            <div className='h-2 bg-gray-100 rounded-full overflow-hidden'>
+            <div className='h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden'>
               <div className='relative h-full'>
                 {hasLockPeriod && (
                   <div
-                    className='absolute h-full bg-blue-600 transition-all duration-300'
+                    className='absolute h-full bg-blue-600 dark:bg-blue-500 transition-all duration-300'
                     style={{
                       width: hasVestingPeriod
                         ? `${(lock / (lock + vesting)) * 100}%`
@@ -135,7 +135,7 @@ export function AllocationSchedule({ allocation }: AllocationScheduleProps) {
                 )}
                 {hasVestingPeriod && (
                   <div
-                    className='absolute h-full bg-blue-600 transition-all duration-300'
+                    className='absolute h-full bg-blue-600 dark:bg-blue-500 transition-all duration-300'
                     style={{
                       width: hasLockPeriod
                         ? `${(vesting / (lock + vesting)) * 100}%`
@@ -160,15 +160,15 @@ export function AllocationSchedule({ allocation }: AllocationScheduleProps) {
                   <div
                     className={`absolute -translate-y-1/2 transform -translate-x-1/2 inline-flex items-center justify-center w-6 h-6 rounded-full ${
                       point.isPast
-                        ? 'text-green-600 bg-green-50'
-                        : 'text-gray-400 bg-gray-50'
+                        ? 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30'
+                        : 'text-gray-400 dark:text-gray-500 bg-gray-50 dark:bg-gray-800'
                     }`}
                   >
                     {point.icon}
                   </div>
                   <div className='absolute top-6 left-1/2 -translate-x-1/2 min-w-[120px] text-sm text-center'>
                     <div className='font-medium'>{point.label}</div>
-                    <div className='text-gray-500'>
+                    <div className='text-gray-500 dark:text-gray-400'>
                       {point.date.toLocaleDateString()}
                     </div>
                   </div>

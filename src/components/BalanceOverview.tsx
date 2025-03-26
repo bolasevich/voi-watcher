@@ -60,19 +60,21 @@ export function BalanceOverview({ allocation }: BalanceOverviewProps) {
     <Card className='p-6 space-y-6'>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
         <div>
-          <h3 className='text-sm text-gray-500 mb-2'>Available Balance</h3>
+          <h3 className='text-sm text-muted-foreground mb-2'>
+            Available Balance
+          </h3>
           <div className='flex items-baseline space-x-2'>
             <p className='text-2xl font-bold'>
               {Math.round(availableBalance).toLocaleString()} VOI
             </p>
-            <span className='text-sm text-gray-500'>
+            <span className='text-sm text-muted-foreground'>
               ({availablePercentage}%)
             </span>
           </div>
         </div>
 
         <div>
-          <h3 className='text-sm text-gray-500 mb-2'>Total Balance</h3>
+          <h3 className='text-sm text-muted-foreground mb-2'>Total Balance</h3>
           <div className='flex items-baseline space-x-2'>
             <p className='text-2xl font-bold'>
               {Math.round(totalWalletBalance).toLocaleString()} VOI
@@ -81,22 +83,24 @@ export function BalanceOverview({ allocation }: BalanceOverviewProps) {
         </div>
       </div>
 
-      <div className='pt-4 border-t'>
-        <h3 className='text-sm text-gray-500 mb-3'>Associated Wallets</h3>
+      <div className='pt-4 border-t border-border'>
+        <h3 className='text-sm text-muted-foreground mb-3'>
+          Associated Wallets
+        </h3>
         <div className='grid gap-3'>
           {error && (
-            <div className='text-sm text-red-600 mb-2'>
+            <div className='text-sm text-destructive mb-2'>
               Error loading balances: {error}
             </div>
           )}
           {walletBalances.map((wallet) => (
-            <div key={wallet.address} className='bg-gray-50 p-3 rounded-lg'>
+            <div key={wallet.address} className='bg-muted p-3 rounded-lg'>
               <div className='flex items-center justify-between mb-2'>
                 <span className='text-sm font-medium'>{wallet.name}</span>
                 <div className='flex items-center'>
                   <span className='text-sm font-semibold'>
                     {isLoading && !balances[wallet.address] ? (
-                      <span className='text-gray-400'>Loading...</span>
+                      <span className='text-muted-foreground'>Loading...</span>
                     ) : (
                       `${Math.round(wallet.balance).toLocaleString()} VOI`
                     )}
