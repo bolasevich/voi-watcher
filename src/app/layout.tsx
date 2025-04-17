@@ -16,6 +16,20 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className='bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50'>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+(function() {
+  try {
+    var theme = localStorage.getItem('theme');
+    if (!theme || theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  } catch (e) {}
+})();
+            `,
+          }}
+        />
         <Providers>
           <Header />
           <main className='max-w-7xl mx-auto px-4 py-8'>{children}</main>
